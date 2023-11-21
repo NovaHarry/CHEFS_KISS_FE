@@ -17,7 +17,11 @@
   background-color: #e42534 !important;
   color: white !important;
 }
-
+.comment-btn {
+  background-color: #e42534 !important;
+  color: white !important;
+  border: none !important;
+}
 .nav-link:hover {
   background-color: #e42534;
   opacity: 90%;
@@ -43,6 +47,21 @@
   color: black;
   transition-duration: 500ms;
 }
+
+.recipeCards:hover {
+  box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075) inset, 0 0 8px #e42534 !important;
+  transition-duration: 500ms;
+}
+
+.recipeCards:hover .recipeTitle {
+  color: #e42534 !important;
+  transition-duration: 500ms !important;
+}
+
+.card-links {
+  color: black;
+}
+
 /* .logo-img:hover {
   animation: flickerAnimation 1s infinite;
 }

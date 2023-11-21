@@ -25,9 +25,11 @@ const Login = () => {
     let payload = { email, password };
     try {
       let res = await axios.post(`${BE_URL}/login`, payload);
-      localStorage.setItem("userInfo", JSON.stringify(res.data));
-      console.log(res.data);
-      navigate(`/home`);
+
+      if (res?.data?.token?.length > 140) {
+        localStorage.setItem("userInfo", JSON.stringify(res.data));
+        navigate(`/home`);
+      }
     } catch (error) {
       console.log(error);
     }

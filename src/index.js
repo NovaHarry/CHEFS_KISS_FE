@@ -10,6 +10,8 @@ import Register from "./components/Register";
 import Error from "./components/Error";
 import Home from "./components/Home";
 import About from "./components/About";
+import Profile from "./components/Profile";
+import Recipe from "./components/Recipe";
 
 const appRouter = createBrowserRouter([
   {
@@ -18,11 +20,11 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Register />,
+        element: <Login />,
       },
       {
-        path: "/login",
-        element: <Login />,
+        path: "/register",
+        element: <Register />,
       },
       {
         path: "/home",
@@ -31,6 +33,14 @@ const appRouter = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/recipe/:id",
+        element: <Recipe />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
       },
     ],
     errorElement: <Error />,
