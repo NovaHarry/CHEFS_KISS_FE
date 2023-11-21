@@ -4,7 +4,6 @@ import { validateRegisteration } from "../utils.js/validate";
 import { BE_URL } from "../utils.js/config";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import Header from "./Header";
 
 const Register = () => {
   const [userName, setUserName] = useState("");
@@ -27,7 +26,10 @@ const Register = () => {
     let payload = { userName, email, password };
     try {
       let res = await axios.post(`${BE_URL}/signup/verify`, payload);
-      navigate(`/login`);
+      if (res?.data === true) {
+        alert("Registeration link sent to your mail Id.");
+        navigate(`/`);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -35,7 +37,6 @@ const Register = () => {
 
   return (
     <div>
-      <Header />
       <div className="container d-flex justify-content-center">
         <Container className="m-5 w-50">
           <h1 className="fw-bold py-3">
@@ -80,18 +81,27 @@ const Register = () => {
 
             <p className="text-decoration-none">
               Already an User?{" "}
-              <Link to="login" className="links">
+              <Link to="/" className="links">
                 <span className="red-black">Login now.</span>
               </Link>
             </p>
 
-            <Button
-              className="fw-bold search-btn"
-              type="submit"
-              onClick={(e) => handleRegister(e)}
-            >
-              Register
-            </Button>
+            <div className="d-flex gap-2">
+              <Button
+                className="fw-bold search-btn"
+                type="submit"
+                onClick={(e) => handleRegister(e)}
+              >
+                Register
+              </Button>
+
+              <Button
+                className="fw-bold search-btn"
+                onClick={(e) => navigate("/forgot-password")}
+              >
+                Forgot Password ?
+              </Button>
+            </div>
           </Form>
         </Container>
       </div>

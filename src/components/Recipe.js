@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useTransition } from "react";
 import { BE_URL } from "../utils.js/config";
 import { useParams } from "react-router-dom";
 import { Badge, Button, Col, Container, Form, Row } from "react-bootstrap";
@@ -8,6 +8,7 @@ const Recipe = () => {
   const { id } = useParams();
 
   const [recipeData, setRecipeData] = useState("");
+  const [comments, setComments] = useState("");
 
   useEffect(() => {
     fetchRecipe(id);
@@ -64,7 +65,11 @@ const Recipe = () => {
                   controlId="exampleForm.ControlTextarea1"
                 >
                   <Form.Label>Share your thoughts here :</Form.Label>
-                  <Form.Control as="textarea" rows={3} />
+                  <Form.Control
+                    as="textarea"
+                    rows={3}
+                    onChange={(e) => setComments(e.target.value)}
+                  />
                 </Form.Group>
                 <Button className="fw-bold comment-btn" type="submit">
                   Submit

@@ -29,6 +29,8 @@ const Login = () => {
       if (res?.data?.token?.length > 140) {
         localStorage.setItem("userInfo", JSON.stringify(res.data));
         navigate(`/home`);
+      } else {
+        alert("Unable to find the user. Try registering.");
       }
     } catch (error) {
       console.log(error);
@@ -70,18 +72,26 @@ const Login = () => {
 
           <p className="">
             New to Chef's Kiss?{" "}
-            <Link to="/" className="links">
+            <Link to="/register" className="links">
               <span className="red-black ">Register now.</span>
             </Link>
           </p>
+          <div className="d-flex gap-2">
+            <Button
+              className="fw-bold search-btn"
+              type="submit"
+              onClick={(e) => handleLogin(e)}
+            >
+              Login
+            </Button>
 
-          <Button
-            className="fw-bold search-btn"
-            type="submit"
-            onClick={(e) => handleLogin(e)}
-          >
-            Login
-          </Button>
+            <Button
+              className="fw-bold search-btn"
+              onClick={(e) => navigate("/forgot-password")}
+            >
+              Forgot Password ?
+            </Button>
+          </div>
         </Form>
       </Container>
     </div>

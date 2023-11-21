@@ -34,10 +34,6 @@ const Home = () => {
     setRecipeData(recipeData.data);
   };
 
-  const handleCard = () => {
-    navigate("/recipe/:id");
-  };
-
   return (
     <div className="container d-flex justify-content-center">
       <Container className="m-5 w-4">

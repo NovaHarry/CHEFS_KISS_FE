@@ -12,6 +12,9 @@ import Home from "./components/Home";
 import About from "./components/About";
 import Profile from "./components/Profile";
 import Recipe from "./components/Recipe";
+import FogotPassword from "./components/ForgotPassword";
+import UpdatePassword from "./components/UpdatePassword";
+import AddRecipes from "./components/AddRecipes";
 
 const appRouter = createBrowserRouter([
   {
@@ -25,6 +28,14 @@ const appRouter = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/forgot-password",
+        element: <FogotPassword />,
+      },
+      {
+        path: "/update-password/:token",
+        element: <UpdatePassword />,
       },
       {
         path: "/home",
@@ -41,6 +52,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile />,
+      },
+      {
+        path: "/addrecipes",
+        element: <AddRecipes />,
       },
     ],
     errorElement: <Error />,
