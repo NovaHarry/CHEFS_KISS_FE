@@ -71,15 +71,6 @@ const Header = () => {
                   My Profile
                 </Nav.Link>
               </Nav>
-              <Form className="d-flex">
-                <Form.Control
-                  type="search"
-                  placeholder="Search"
-                  className="me-2 search-field"
-                  aria-label="Search"
-                />
-                <Button className="fw-bold search-btn">Search</Button>
-              </Form>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>

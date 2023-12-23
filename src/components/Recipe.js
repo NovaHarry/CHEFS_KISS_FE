@@ -17,10 +17,22 @@ const Recipe = () => {
   const fetchRecipe = async () => {
     try {
       const res = await axios.get(`${BE_URL}/${id}`);
-
       setRecipeData(res.data);
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const handleComment = async (e, id) => {
+    e.preventDefault();
+    if (comments.length > 0) {
+      try {
+        let payload = { comments };
+        const res = await axios.put(`${BE_URL}/comments/${id}`, payload);
+        setRecipeData(res.data);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -64,14 +76,20 @@ const Recipe = () => {
                   className="mb-3"
                   controlId="exampleForm.ControlTextarea1"
                 >
-                  <Form.Label>Share your thoughts here :</Form.Label>
+                  <span className="fw-bold py-2">
+                    Share your thoughts here :
+                  </span>
                   <Form.Control
                     as="textarea"
                     rows={3}
                     onChange={(e) => setComments(e.target.value)}
                   />
                 </Form.Group>
-                <Button className="fw-bold comment-btn" type="submit">
+                <Button
+                  className="fw-bold comment-btn"
+                  type="submit"
+                  onClick={(e) => handleComment(e, recipeData._id)}
+                >
                   Submit
                 </Button>
               </Form>
@@ -83,6 +101,20 @@ const Recipe = () => {
                 </Badge>
               ))}
               <span className="fw-bold">Ratings : {recipeData.ratings}/5</span>
+            </div>
+            <div className="container py-4 shadow-lg comment-box ">
+              <span className="fw-bold">Comments :</span>
+              <div className="d-flex flex-column py-4 gap-3 comment-section">
+                {recipeData?.comments?.length > 0 ? (
+                  recipeData?.comments?.map((data, idx) => (
+                    <span className="rounded shadow-sm" key={idx}>
+                      {data}
+                    </span>
+                  ))
+                ) : (
+                  <span>Be the first one to comment</span>
+                )}
+              </div>
             </div>
           </Col>
         </Row>

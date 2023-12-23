@@ -62,6 +62,14 @@
   color: black;
 }
 
+.comment-box {
+  border-radius: 5px;
+}
+.comment-section {
+  height: 20vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
 /* .logo-img:hover {
   animation: flickerAnimation 1s infinite;
 }

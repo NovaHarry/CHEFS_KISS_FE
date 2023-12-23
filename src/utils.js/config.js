@@ -1,4 +1,6 @@
-export const BE_URL = "https://chefs-kiss-be.onrender.com";
+// export const BE_URL = "https://chefs-kiss-be.onrender.com";
+
+export const BE_URL = "http://localhost:5000";
 
 export const LOGO_URL =
   "https://www.dictionary.com/e/wp-content/uploads/2020/01/ChefKiss_1000x700.jpg";
